@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+
+  nxfilter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nxfilter:v0.6
+    container_name: nxfilter
+    working_dir: /nxfilter
+    volumes:
+      - nxfilter_conf:/nxfilter/conf
+      - nxfilter_log:/nxfilter/log
+      - nxfilter_db:/nxfilter/db
+    ports:
+      - "80:80"
+      - "443:443"
+      - "53:53"
+    privileged: true
+
+volumes:
+  nxfilter_conf:
+    driver: local
+    driver_opts:
+      type: none
+      device: /nxfilter/conf
+      o: bind
+  nxfilter_log:
+    driver: local
+    driver_opts:
+      type: none
+      device: /nxfilter/log
+      o: bind
+  nxfilter_db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /nxfilter/db
+      o: bind
