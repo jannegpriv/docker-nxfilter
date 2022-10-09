@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: nxfilter:v4.5.2.9
+    image: nxfilter:v4.6.3.5
     container_name: nxfilter
     working_dir: /nxfilter
     volumes:
